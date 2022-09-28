@@ -63,13 +63,23 @@ class TestAllMethods(unittest.TestCase):
 
 	## Check to see whether count_a works
 	def test_count_a(self):
-		self.assertEqual(count_a("Hello all"), 1, "count_a(Hello all)")
+		self.assertAlmostEqual(count_a("Hello all"), 1, "count_a(Hello all)")
 		self.assertEqual(count_a("Aardvark"), 3, "count_a(Aardvark)")
 		self.assertEqual(count_a("one"), 0, "count_a(one)")
 
 	## Check to see whether you can add an item to the warehouse
 	def test_add_item(self):
-		pass
+		self.warehouse1 = Warehouse()
+		self.warehouse1.add_item(self.item1)
+		self.assertIn(self.item1, self.warehouse1.items, "item1")
+		self.warehouse1.add_item(self.item2)
+		self.warehouse1.add_item(self.item3)
+		self.assertIn(self.item2, self.warehouse1.items, "item2")
+		self.assertIn(self.item3, self.warehouse1.items, "item3")
+
+		
+
+		
 
 
 	## Check to see whether warehouse correctly returns the item with the most stock
